@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function addTodo(){
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const container = document.getElementById('container');
+        const outerDiv = document.createElement('div');
+        const innerDiv = document.createElement('div');
+        const innerDiv2 = document.createElement('div');
+        const button = document.createElement('button');
+        outerDiv.innerHTML = title;
+        innerDiv.innerHTML = description;
+        // button.setAttribute('name', 'addTodo');
+        button.textContent = 'Mark as Done 😗';
+        container.appendChild(outerDiv)
+        outerDiv.appendChild(innerDiv);
+        outerDiv.appendChild(innerDiv2);
+        outerDiv.appendChild(button);
+        
+        //<div>
+        //      <div>title</div>
+        //      <div>description</div>
+        //      <button><button/>
+        //</div>
+        }
+    </script>
+</head>
+<body>
+    <input id="title" type="text" placeholder="title">
+    <br><br>
+    <input id="description" type="text" placeholder="title">
+    <br><br>
+    <button onclick="addTodo()">Add Todo</button>
+    <div id="container"></div>
+</body>
+</html>
