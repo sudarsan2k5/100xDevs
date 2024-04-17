@@ -5,22 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        let globalId = 1;
+
+        function markAsDone(todoId){
+            const parent = document.getElementById(todoId);
+            parent.children[2].innerHTML = 'DONE 😗';
+        }
+        function createChild(title, description, id){
+            const child = document.createElement('div');
+            // first Grand Parent
+            const firstGrandParent = document.createElement('div');
+            firstGrandParent.innerHTML = title;
+            // Second Grand Parent
+            const secondGrandParent = document.createElement('div');
+            secondGrandParent.innerHTML = description;
+            // third Grand Parent
+            const thirdGrandParent = document.createElement('button');
+            thirdGrandParent.innerHTML = 'Mark as Done!';
+            // here create a mark as done function
+            thirdGrandParent.setAttribute('onClick', `markAsDone(${id})`);
+            child.appendChild(firstGrandParent);
+            child.appendChild(secondGrandParent);
+            child.appendChild(thirdGrandParent);
+            child.setAttribute('id', id);
+            return child;
+            }
+
+            // parent function
         function addTodo(){
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-        const container = document.getElementById('container');
-        const outerDiv = document.createElement('div');
-        const innerDiv = document.createElement('div');
-        const innerDiv2 = document.createElement('div');
-        const button = document.createElement('button');
-        outerDiv.innerHTML = title;
-        innerDiv.innerHTML = description;
-        // button.setAttribute('name', 'addTodo');
-        button.textContent = 'Mark as Done 😗';
-        container.appendChild(outerDiv)
-        outerDiv.appendChild(innerDiv);
-        outerDiv.appendChild(innerDiv2);
-        outerDiv.appendChild(button);
+        const parent = document.getElementById('container');
+
+        parent.appendChild(createChild(title, description, globalId++));
+        
         
         //<div>
         //      <div>title</div>
